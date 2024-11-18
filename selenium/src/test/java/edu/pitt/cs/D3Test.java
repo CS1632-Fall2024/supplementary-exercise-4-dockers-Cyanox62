@@ -44,7 +44,7 @@ public class D3Test {
 	ChromeOptions options = new ChromeOptions();
     options.addArguments("--headless");
     driver = new ChromeDriver(options);
-	
+
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
 
@@ -66,7 +66,7 @@ public class D3Test {
       String attribute = element.getAttribute("href");
       vars.put("resetHref", attribute);
     }
-    assertEquals(vars.get("resetHref").toString(), "http://localhost:8080reset");
+    assertEquals(vars.get("resetHref").toString(), "http://localhost:8080/reset");
   }
 
   @Test
@@ -92,7 +92,7 @@ public class D3Test {
       String attribute = element.getAttribute("src");
       vars.put("cat", attribute);
     }
-    assertEquals(vars.get("cat").toString(), "http://localhost:8080images/cat2.jpg");
+    assertEquals(vars.get("cat").toString(), "http://localhost:8080/images/cat2.jpg");
   }
 
   @Test
@@ -179,7 +179,7 @@ public class D3Test {
   public void tEST11GREETACATWITHNAME() {
 
     js.executeScript("document.cookie = \"1=false\";document.cookie = \"2=false\";document.cookie = \"3=false\";");
-    driver.get("http://localhost:8080greet-a-cat/Jennyanydots");
+    driver.get("http://localhost:8080/greet-a-cat/Jennyanydots");
     assertThat(driver.findElement(By.cssSelector("#greeting > h4")).getText(), is("Meow! from Jennyanydots."));
   }
 }
