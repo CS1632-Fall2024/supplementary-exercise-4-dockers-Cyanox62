@@ -41,13 +41,12 @@ public class D3Test {
 
   @Before
   public void setUp() {
-    //driver = new ChromeDriver();
-    js = (JavascriptExecutor) driver;
-    vars = new HashMap<String, Object>();
-
 	ChromeOptions options = new ChromeOptions();
     options.addArguments("--headless");
     driver = new ChromeDriver(options);
+	
+    js = (JavascriptExecutor) driver;
+    vars = new HashMap<String, Object>();
 
     driver.get("http://localhost:8080");
     js.executeScript("document.cookie = \"1=false\";document.cookie = \"2=false\";document.cookie = \"3=false\";");
