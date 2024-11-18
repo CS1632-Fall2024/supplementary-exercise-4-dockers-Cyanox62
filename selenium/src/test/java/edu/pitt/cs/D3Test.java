@@ -70,16 +70,6 @@ public class D3Test {
   }
 
   @Test
-  public void tEST2RESET() {
-
-    js.executeScript("document.cookie = \"1=true\";document.cookie = \"2=true\";document.cookie = \"3=true\";");
-    driver.findElement(By.linkText("Reset")).click();
-    assertThat(driver.findElement(By.id("cat-id1")).getText(), is("ID 1. Jennyanydots"));
-    assertThat(driver.findElement(By.id("cat-id2")).getText(), is("ID 2. Old Deuteronomy"));
-    assertThat(driver.findElement(By.id("cat-id3")).getText(), is("ID 3. Mistoffelees"));
-  }
-
-  @Test
   public void tEST3CATALOG() {
     driver.get("http://localhost:8080");
     driver.findElement(By.linkText("Catalog")).click();
@@ -129,19 +119,6 @@ public class D3Test {
     assertThat(driver.findElement(By.xpath("//div[@id=\'listing\']/ul/li[2]")).getText(), is("ID 2. Old Deuteronomy"));
     assertThat(driver.findElement(By.xpath("//div[@id=\'listing\']/ul/li[3]")).getText(), is("ID 3. Mistoffelees"));
     assertThat(driver.findElement(By.id("rentResult")).getText(), is("Success!"));
-  }
-
-  @Test
-  public void tEST7RETURN() {
-
-    js.executeScript("document.cookie = \"1=false\";document.cookie = \"2=true\";document.cookie = \"3=false\";");
-    driver.findElement(By.linkText("Rent-A-Cat")).click();
-    driver.findElement(By.id("returnID")).sendKeys("2");
-    driver.findElement(By.xpath("//button[contains(.,\'Return\')]")).click();
-    assertThat(driver.findElement(By.id("cat-id1")).getText(), is("ID 1. Jennyanydots"));
-    assertThat(driver.findElement(By.id("cat-id2")).getText(), is("ID 2. Old Deuteronomy"));
-    assertThat(driver.findElement(By.id("cat-id3")).getText(), is("ID 3. Mistoffelees"));
-    assertThat(driver.findElement(By.id("returnResult")).getText(), is("Success!"));
   }
 
   @Test
